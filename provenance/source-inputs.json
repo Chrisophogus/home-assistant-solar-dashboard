@@ -1,0 +1,210 @@
+{
+  "source_files": [
+    {
+      "source": "production/custom_components/solar_finance/__init__.py",
+      "destination": "custom_components/solar_finance/__init__.py",
+      "source_sha256": "d621cd845fc0a6c06199782a4b9a6dbac05979e247a78bdec4452709fbd3b494"
+    },
+    {
+      "source": "production/custom_components/solar_finance/config_flow.py",
+      "destination": "custom_components/solar_finance/config_flow.py",
+      "source_sha256": "29372191445db4f34aa07a68cf0628c0cd861062f2082ca786192464aa8e514c"
+    },
+    {
+      "source": "production/custom_components/solar_finance/const.py",
+      "destination": "custom_components/solar_finance/const.py",
+      "source_sha256": "3363119d41fd120b6db7cd1f6b8d2735a6e2310495e91691b6d47aeb5b9bbcdb"
+    },
+    {
+      "source": "production/custom_components/solar_finance/continuity.py",
+      "destination": "custom_components/solar_finance/continuity.py",
+      "source_sha256": "6273b0475545d96b43c7dc94a230f751138ebab653a5b6d551d52e55f4f124f9"
+    },
+    {
+      "source": "production/custom_components/solar_finance/engine.py",
+      "destination": "custom_components/solar_finance/engine.py",
+      "source_sha256": "48a525ef9091a3d489d5e90428c92d26ea404ddc073c3fb607e8af2964223fe3"
+    },
+    {
+      "source": "production/custom_components/solar_finance/history.py",
+      "destination": "custom_components/solar_finance/history.py",
+      "source_sha256": "11eee039b3278c25f32a5c5c3e69908a9475e3ed998dfc8d45618fe6abc77085"
+    },
+    {
+      "source": "production/custom_components/solar_finance/ledger.py",
+      "destination": "custom_components/solar_finance/ledger.py",
+      "source_sha256": "02a7c45276bbc37443f6ecc21530d6b7d9343efce0fdb5aeb1b28e9ecb8089ed"
+    },
+    {
+      "source": "production/custom_components/solar_finance/manifest.json",
+      "destination": "custom_components/solar_finance/manifest.json",
+      "source_sha256": "f963478e6f84b7407319ba9819263cad0366b75caf3cdc350595ac15c62ff1df"
+    },
+    {
+      "source": "production/custom_components/solar_finance/model.py",
+      "destination": "custom_components/solar_finance/model.py",
+      "source_sha256": "7e6b1a2414e4fc0294354058d841cd9c3d2fc43bd06336191a0995a1e20af261"
+    },
+    {
+      "source": "production/custom_components/solar_finance/production_adapter.py",
+      "destination": "custom_components/solar_finance/production_adapter.py",
+      "source_sha256": "ef7396bb195d93b43d3077c280bcdcde90f72e3a94ad0d41ee0e4ed14af18bbf"
+    },
+    {
+      "source": "production/custom_components/solar_finance/recorder_import.py",
+      "destination": "custom_components/solar_finance/recorder_import.py",
+      "source_sha256": "b6d453d168281f77410e17305f9c31a4342209157c108d9f21e54c801ecf8ef0"
+    },
+    {
+      "source": "production/custom_components/solar_finance/reporting.py",
+      "destination": "custom_components/solar_finance/reporting.py",
+      "source_sha256": "93b33ffa36a53a21f92606529878231f8a7d424372e602ec513bad8adcfe2365"
+    },
+    {
+      "source": "production/custom_components/solar_finance/runtime_continuity.py",
+      "destination": "custom_components/solar_finance/runtime_continuity.py",
+      "source_sha256": "18652547783b380e3300e93c0580ab1f485cc3e8605767c6ba4c93eeb6eb5dca"
+    },
+    {
+      "source": "production/custom_components/solar_finance/sensor.py",
+      "destination": "custom_components/solar_finance/sensor.py",
+      "source_sha256": "519fd1d5e6d89003ba525bb71813f083f3e048ae659eaaafd9068cdc3f2b8ccc"
+    },
+    {
+      "source": "production/custom_components/solar_finance/services.yaml",
+      "destination": "custom_components/solar_finance/services.yaml",
+      "source_sha256": "ef32dace23f118e7f36a159ff9aa4886037ce71b82377353a0859244db8fa8ef"
+    },
+    {
+      "source": "production/custom_components/solar_finance/settings.py",
+      "destination": "custom_components/solar_finance/settings.py",
+      "source_sha256": "b84b3f6cd6908955d1bd3dc1560e477757de217e136a80cbbef18177f39e5071"
+    },
+    {
+      "source": "production/custom_components/solar_finance/strings.json",
+      "destination": "custom_components/solar_finance/strings.json",
+      "source_sha256": "8af98b4bec7aefdf85136272e705ebbbe120e2456e1dcd82fa1dd7e465233fb2"
+    },
+    {
+      "source": "production/custom_components/solar_finance/tests/test_engine.py",
+      "destination": "custom_components/solar_finance/tests/test_engine.py",
+      "source_sha256": "0882339b8133b43e3bd660d768ad8ec8f77cf5cad4ca8b321c9251c09ad83d36"
+    },
+    {
+      "source": "production/custom_components/solar_finance/tests/test_history.py",
+      "destination": "custom_components/solar_finance/tests/test_history.py",
+      "source_sha256": "d0133a6aa9d6e73730853597967566dcaa93b9caf8a20969122151a2138705df"
+    },
+    {
+      "source": "production/custom_components/solar_finance/tests/test_runtime.py",
+      "destination": "custom_components/solar_finance/tests/test_runtime.py",
+      "source_sha256": "6805ddbcef5bb24c3bd978dbec90c6b0b397c0245436903d481ab7a77c76e1fd"
+    },
+    {
+      "source": "production/custom_components/solar_finance/tests/test_schedule.py",
+      "destination": "custom_components/solar_finance/tests/test_schedule.py",
+      "source_sha256": "acd6455c5bc243d166d20d96255ea382929c21ffa92ad095e7f5abff6051a740"
+    },
+    {
+      "source": "production/custom_components/solar_finance/translations/en.json",
+      "destination": "custom_components/solar_finance/translations/en.json",
+      "source_sha256": "8af98b4bec7aefdf85136272e705ebbbe120e2456e1dcd82fa1dd7e465233fb2"
+    },
+    {
+      "source": "synthetic-regression-source/test_continuity.py",
+      "destination": "custom_components/solar_finance/tests/test_continuity.py",
+      "source_sha256": "b81c4349ecb46a8f9dc4abca3892025cca94c2869d5b0517b12b57f0eb895b84"
+    },
+    {
+      "source": "synthetic-regression-source/test_production_adapter.py",
+      "destination": "custom_components/solar_finance/tests/test_production_adapter.py",
+      "source_sha256": "ac2ae63523b37bb8760ef52294c55668adfb768eba1d1247bfa0fe8905d83ac8"
+    },
+    {
+      "source": "synthetic-regression-source/custom_components/solar_finance/tests/test_continuous_runtime.py",
+      "destination": "custom_components/solar_finance/tests/test_continuous_runtime.py",
+      "source_sha256": "0b5c4adf0ded50e3a01d4cbeb3834be589b316e328111c7ac8aeb4419fba7c9a"
+    },
+    {
+      "source": "experimental-wrapper-source/acquire.py",
+      "destination": "experimental/predbat_shadow/acquire.py",
+      "source_sha256": "0be954131400c60aa5d3fac08b4049e4a4e34fab61c0f72082af89cadfe28628"
+    },
+    {
+      "source": "experimental-wrapper-source/action_replay.py",
+      "destination": "experimental/predbat_shadow/action_replay.py",
+      "source_sha256": "2a8c9111345a529d6e422d3914b8d768d7c6751280528b3c9a8fc72865367d85"
+    },
+    {
+      "source": "experimental-wrapper-source/archive.py",
+      "destination": "experimental/predbat_shadow/archive.py",
+      "source_sha256": "956c2b92baffc45193537170787cff134b7eb558848b9cef49726884d09257dd"
+    },
+    {
+      "source": "experimental-wrapper-source/build_runtime.py",
+      "destination": "experimental/predbat_shadow/build_runtime.py",
+      "source_sha256": "442744829972fb6a1107bdc831d381406b583cbf10d01fc3eba6334d64b81118"
+    },
+    {
+      "source": "experimental-wrapper-source/forecast_inputs.py",
+      "destination": "experimental/predbat_shadow/forecast_inputs.py",
+      "source_sha256": "91006ea3c6eeacd4fdf07124e5877ee3ddb362106e26947a724bd984cdf7cf1f"
+    },
+    {
+      "source": "experimental-wrapper-source/fourth_card.py",
+      "destination": "experimental/predbat_shadow/fourth_card.py",
+      "source_sha256": "64765a0d142df371d8a8c395e6c135224023830f9816239b1b22ece0337bd089"
+    },
+    {
+      "source": "experimental-wrapper-source/isolation.py",
+      "destination": "experimental/predbat_shadow/isolation.py",
+      "source_sha256": "f96bf98fd795bb48a79b3c8b9c8087d2bac65dc3b8e3063203ed325a12fed202"
+    },
+    {
+      "source": "experimental-wrapper-source/launch_plan.py",
+      "destination": "experimental/predbat_shadow/launch_plan.py",
+      "source_sha256": "e94468c5464f1d92606f59e1a669bcd94454dd22971a60cbb09c5ef2d2a02392"
+    },
+    {
+      "source": "experimental-wrapper-source/matched_replay.py",
+      "destination": "experimental/predbat_shadow/matched_replay.py",
+      "source_sha256": "0d6e2c4143ba3e2a16e1f74b7fd7433a644ae872953567a1bf782ac4fdc353e8"
+    },
+    {
+      "source": "experimental-wrapper-source/plan_job.py",
+      "destination": "experimental/predbat_shadow/plan_job.py",
+      "source_sha256": "0caf0261f9ea7c4d4545163fa1b00d6c614445352dea7807ea5056a6a5ff5b13"
+    },
+    {
+      "source": "experimental-wrapper-source/service.py",
+      "destination": "experimental/predbat_shadow/service.py",
+      "source_sha256": "71b61dd3d55fd5453fb802fe0fd7573a7c35df55f2f7986b2afd9d7a42bc285b"
+    },
+    {
+      "source": "experimental-wrapper-source/test_action_replay.py",
+      "destination": "experimental/predbat_shadow/test_action_replay.py",
+      "source_sha256": "ef245e8ebd041ce9a476ea669b65d0f290bc5fd71efea274816f6e4895a4c1e4"
+    },
+    {
+      "source": "experimental-wrapper-source/test_archive.py",
+      "destination": "experimental/predbat_shadow/test_archive.py",
+      "source_sha256": "62cb3d804a7310cf5a8348a6b13643d36a6ac3c79c200b714728549d9360b230"
+    },
+    {
+      "source": "experimental-wrapper-source/test_deploy.py",
+      "destination": "experimental/predbat_shadow/test_deploy.py",
+      "source_sha256": "4f8889307c76a7ef3f7766b426120ae90f181fcc36d797fcbd2fb8261ae1ee96"
+    },
+    {
+      "source": "experimental-wrapper-source/worker_hour.py",
+      "destination": "experimental/predbat_shadow/worker_hour.py",
+      "source_sha256": "a9c02ffce9c85e77598346690accff09633267764e9725d194ab188792fbe0b4"
+    },
+    {
+      "source": "production/www/community/sigenergy-flow-card/sigenergy-flow-card.js",
+      "destination": "www/solar-dashboard/sigenergy-flow-card.js",
+      "source_sha256": "f653144f9d6cc0afd2dbc5763908a5b392454494fa5572adc228537ed6c6f506"
+    }
+  ],
+  "note": "Logical source labels identify provenance without host staging paths. Source SHA-256 values are unchanged from the original export; sanitized artifact hashes are in FILE-MANIFEST.json. No private worksheets or data were read or hashed."
+}

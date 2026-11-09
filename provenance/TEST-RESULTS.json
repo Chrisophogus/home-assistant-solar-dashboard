@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "suites": [
+    {
+      "suite": "finance",
+      "status": "PASS",
+      "test_count": 112,
+      "resource_warnings": 0
+    },
+    {
+      "suite": "experimental",
+      "status": "PASS",
+      "test_count": 16,
+      "resource_warnings": 0
+    },
+    {
+      "suite": "frontend_syntax",
+      "status": "PASS",
+      "test_count": null,
+      "resource_warnings": 0
+    },
+    {
+      "suite": "frontend",
+      "status": "PASS",
+      "test_count": 7,
+      "resource_warnings": 0
+    }
+  ],
+  "python_sources_compiled": 37,
+  "credentials_used": false,
+  "real_forecast_requests": 0,
+  "github_auth_or_upload": false,
+  "deployment_or_restart": false,
+  "current_source_drift": [],
+  "reviewed_finance_deployment_drift": [],
+  "notes": "Synthetic fixtures only. No browser rendering, actual optimiser execution, network/broker deployment, device action or full HA compatibility claim."
+}

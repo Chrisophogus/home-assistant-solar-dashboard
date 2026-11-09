@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "files_scanned": 62,
+  "findings": [],
+  "reviewed_public_url_hosts_present": [
+    "api.solcast.com.au",
+    "app-eu.sigencloud.com",
+    "example.invalid",
+    "github.com",
+    "open-meteo.com",
+    "raw.githubusercontent.com",
+    "www.apache.org",
+    "www.w3.org"
+  ],
+  "entity_literals_count": 64,
+  "rules": [
+    "embedded_data_payload",
+    "long_encoded_payload",
+    "private_key_material",
+    "literal_registry_id",
+    "credential_value",
+    "email_address",
+    "literal_coordinate",
+    "vehicle_vin",
+    "uk_meter_number"
+  ],
+  "limitations": "Bounded static source scan; no private inputs read; not a guarantee of anonymity or runtime safety.",
+  "extended_installation_literal_rules": [
+    "personal_name",
+    "household_entity_or_asset",
+    "trained_household_fit"
+  ],
+  "original_registry_identifiers_absent": true,
+  "explicit_source_allowlist": true,
+  "excluded_private_inputs_read_or_hashed": false,
+  "real_forecast_requests": 0,
+  "github_upload_or_auth": false,
+  "production_changes": false,
+  "inline_images_removed": 4,
+  "scan_scope": "All candidate UTF-8 source/docs/assets; public endpoint hosts reviewed; no private worksheets/config/data traversed."
+}

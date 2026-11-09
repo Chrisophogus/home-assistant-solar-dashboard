@@ -1,0 +1,20 @@
+{
+  "sigenergy_flow_card": {
+    "repository": "https://github.com/jyavenard/sigenergy-flow-card",
+    "installed_version_evidence": "Home Assistant HACS update entity installed_version v52; installed source header v52",
+    "upstream_tag": "v52",
+    "commit": "90d60c6e924af5dd485d174d820c7893d4fb6e7f",
+    "license_url": "https://raw.githubusercontent.com/jyavenard/sigenergy-flow-card/90d60c6e924af5dd485d174d820c7893d4fb6e7f/LICENSE",
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "upstream_notice_present": false,
+    "installed_file_is_modified": true,
+    "exact_derivation_from_v52": "Not independently proven; version is HACS/header evidence, not byte identity"
+  },
+  "predbat": {
+    "repository": "https://github.com/springfall2008/batpred",
+    "version": "v9.7.1",
+    "commit": "950a948366d453e825c8d883f6fff1e18c355a6e",
+    "vendored": false,
+    "license": "Upstream personal-use terms; review at pinned commit before fetching/running. No relicense granted."
+  }
+}
