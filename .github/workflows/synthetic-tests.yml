@@ -1,0 +1,29 @@
+name: Synthetic source checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  synthetic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Finance synthetic regressions
+        run: python3 -B -m unittest discover -s custom_components/solar_finance/tests -p 'test*.py'
+      - name: Experimental wrapper synthetic regressions (no upstream download)
+        run: python3 -B -m unittest discover -s experimental/predbat_shadow -p 'test*.py'
+      - name: Frontend syntax
+        run: node --check www/solar-dashboard/sigenergy-flow-card.js
+      - name: Frontend synthetic checks
+        run: node tests/frontend.cjs
+      - name: Privacy scan
+        run: python3 tools/privacy_scan.py
