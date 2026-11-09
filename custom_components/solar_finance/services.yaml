@@ -1,0 +1,6 @@
+backup:
+  name: "Back up finance ledger"
+  description: "Create a consistent SQLite snapshot in solar_finance_data. Includes samples, intervals, immutable tariff/input/policy versions and precise reports. Does not control any energy device."
+backfill:
+  name: "Backfill retained Recorder history"
+  description: "Read existing cumulative Sigenergy meter, SOC, mode and plant heartbeat history through Home Assistant's read-only Recorder API from 26 October 2026 11:01:40 UTC. Archive original observations and eligible intervals in the finance-owned ledger, idempotently. Does not modify Recorder, rates or energy controls."

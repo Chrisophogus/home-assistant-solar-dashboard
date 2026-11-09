@@ -1,0 +1,140 @@
+{
+  "title": "Solar Finance",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Read-only finance collector",
+        "description": "Confirm the cumulative Sigenergy sources. This starts durable collection only, not financial calculations or energy control. Configure missing verified inputs in the integration's Configure menu after setup. Values are not backfilled from daily mySigen generation.",
+        "data": {
+          "import": "Cumulative grid import",
+          "export": "Cumulative grid export",
+          "load": "Cumulative household consumption",
+          "pv": "Cumulative PV generation",
+          "charge": "Cumulative battery charging",
+          "discharge": "Cumulative battery discharging",
+          "soc": "Measured battery SOC",
+          "mode": "Reported operating mode"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "Solar Finance is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Solar Finance evidence",
+        "menu_options": {
+          "live_settings": "Live reserve and observed power settings (read-only)",
+          "schedule_model": "Estimated schedule model and uncertainty (versioned)",
+          "evidence": "Meter boundary and baseline evidence",
+          "tariff_history": "Correct import/export dates or rates (versioned)",
+          "activate_export": "Activate Flux export \u2014 confirmation date and time",
+          "sources": "Telemetry sources"
+        }
+      },
+      "live_settings": {
+        "title": "Read-only reserve and limits",
+        "description": "Current HA reserve: {reserve}%. Unknown/unavailable never fall back to a saved 50%. Settings observations below are dated; a configured U32 all-ones sentinel is NOT a power limit. Capabilities/ratings are distinct from configured settings. No energy controls are written.\n\n{settings}"
+      },
+      "schedule_model": {
+        "title": "Versioned schedule model \u2014 not an AI performance claim",
+        "description": "Explicit estimated AC end-use model; policy timing is unchanged. Inclusive-load correction applies to BOTH baseline and schedule on identical covered segments. Calibration is retrospective. PV factor 1 is an optimistic assumption; sensitivities are illustrative, not measured confidence limits. Grid headroom remains unknown when its register is invalid. Historical hardware applicability is an assumption. Edits append a model version; no old samples or reports are removed. These settings override legacy physical fields in Baseline evidence; actual reserve always comes from dated observations, never a fixed option. No energy controls are written.",
+        "data": {
+          "model": "Dated model, evidence and uncertainty (JSON)"
+        }
+      },
+      "tariff_history": {
+        "title": "Separate import/export histories",
+        "description": "Configure your own verified dated sources and evidence. Exported defaults are synthetic examples, not installation evidence.",
+        "data": {
+          "record": "Tariff record to correct"
+        }
+      },
+      "edit_tariff": {
+        "title": "Correct tariff date/rates",
+        "description": "Date AND time are Europe/London. A correction replaces this record prospectively or retrospectively in calculations, retaining the old audit version. Currency units are explicit. For Flexible import only the standard rate is used. Keep Assumed enabled unless dates/rates are confirmed; record evidence. This does NOT change the supplier tariff or inverter.",
+        "data": {
+          "date": "Effective date (Europe/London)",
+          "time": "Effective time (Europe/London)",
+          "off_peak_rate": "02:00\u201305:00 rate per kWh",
+          "standard_rate": "Other-times rate per kWh (Flexible: all hours)",
+          "peak_rate": "16:00\u201319:00 rate per kWh",
+          "standing_rate": "Standing per day (export: 0)",
+          "currency_unit": "Rate currency unit \u2014 GBP or pence",
+          "assumed": "Effective date/rates are assumed, not billing verified",
+          "evidence": "Confirmation reference or explicit assumption provenance"
+        }
+      },
+      "activate_export": {
+        "title": "Activate Flux export",
+        "description": "Only submit after confirmation. Set the actual effective date AND time, including a retrospective date if required. No automatic waiting period. Initial rates GBP/kWh: 02\u201305 0.0434; 16\u201319 0.2770; other 0.0976; standing 0. Does not change import history, supplier account or energy controls. Enter a dated confirmation reference; use Assumed only if explicitly authorized.",
+        "data": {
+          "date": "Confirmed export effective date (Europe/London)",
+          "time": "Confirmed export effective time (Europe/London)",
+          "off_peak_rate": "02:00\u201305:00 export rate per kWh",
+          "standard_rate": "Other-times export rate per kWh",
+          "peak_rate": "16:00\u201319:00 export rate per kWh",
+          "standing_rate": "Export standing per day (0)",
+          "currency_unit": "Rate currency unit \u2014 GBP or pence",
+          "assumed": "Effective date/rates are assumed, not billing verified",
+          "evidence": "Dated supplier export confirmation reference"
+        }
+      },
+      "evidence": {
+        "title": "Verified evidence, not assumed defaults",
+        "description": "Baseline tariff and meter-boundary evidence. See Live settings for ACTUAL reserve (not the legacy fixed option below). See Estimated schedule model for the versioned physical scenario: it overrides legacy capacity/loss/power fields here. The live reserve is never backfilled from a saved option. No controls are written.",
+        "data": {
+          "boundary_verified": "All three meters exclude Hypervolt consistently \u2014 verified",
+          "boundary_evidence": "Meter/wiring evidence and verification date",
+          "effective_from": "Evidence valid from (RFC3339 with Z or offset)",
+          "baseline_import_gbp_kwh": "Flexible baseline import (GBP/kWh, VAT inclusive)",
+          "baseline_standing_gbp_day": "Flexible baseline standing (GBP/day)",
+          "baseline_evidence": "Baseline provenance",
+          "usable_capacity_kwh": "Usable battery capacity BEFORE reserve (kWh)",
+          "reserve_percent": "Verified reserve (%)",
+          "reserve_evidence": "Dated reserve evidence (fixed during this version)",
+          "charge_limit_kw": "Verified aggregate AC battery charge limit (kW)",
+          "discharge_limit_kw": "Verified AC battery discharge limit (kW)",
+          "grid_import_limit_kw": "Verified household grid import limit (kW)",
+          "export_limit_kw": "Verified grid export limit (kW)",
+          "hardware_evidence": "Capacity and actual power-limit evidence",
+          "charge_efficiency": "Calibrated AC-to-stored efficiency (0\u20131)",
+          "discharge_efficiency": "Calibrated stored-to-AC efficiency (0\u20131)",
+          "standby_loss_kw": "Calibrated stored-side standby loss (kW)",
+          "pv_ac_factor": "Calibrated generation-meter-to-AC factor (0\u20131)",
+          "loss_evidence": "Calibration dates, method, meter boundaries and uncertainty"
+        }
+      },
+      "tariffs": {
+        "title": "Verified tariff activations",
+        "description": "Leave [] until effective dates are evidenced. Templates: flux_import, prime_export, flux_export_planned. Replacement is NOT active by default. Enter a JSON array of objects with template, effective_from (RFC3339 with offset), evidence, and optionally effective_to. Example shape only: {\"template\":\"flux_import\",\"effective_from\":\"DATED_EVIDENCE_REQUIRED\",\"evidence\":\"Supplier confirmation reference\"}. Import and export need separate records. No today's-rate retrospective substitution. Activations are append-only; retain old entries. A later effective version supersedes an earlier open-ended one.",
+        "data": {
+          "activations": "Verified tariff activation ledger (JSON array)"
+        }
+      },
+      "sources": {
+        "title": "Matched cumulative telemetry",
+        "description": "Changing sources breaks coverage; never join unrelated cumulative meters. All energy sources require Wh, kWh or MWh. Freshness and timestamp skew are checked.",
+        "data": {
+          "import": "Cumulative grid import",
+          "export": "Cumulative grid export",
+          "load": "Cumulative household consumption",
+          "pv": "Cumulative PV generation",
+          "charge": "Cumulative battery charging",
+          "discharge": "Cumulative battery discharging",
+          "soc": "Measured battery SOC",
+          "mode": "Reported operating mode"
+        }
+      }
+    },
+    "error": {
+      "invalid_evidence": "Invalid evidence: use finite nonnegative rates, valid ranges and a timezone-aware effective timestamp. Limits/capacity must be positive; efficiencies >0 and <=1.",
+      "invalid_tariffs": "Invalid rate, missing evidence, conflicting correction, or ambiguous/nonexistent London clock time. Rates must be finite with explicit currency units; export standing must be zero. Edit the latest existing record for a same-date correction."
+    },
+    "abort": {
+      "backend_unavailable": "Finance backend is not loaded. Load the integration before editing its ledger."
+    }
+  }
+}
