@@ -1,0 +1,11 @@
+# Card example only; replace example entities locally before use.
+type: custom:sigenergy-flow-card
+weather_entity: weather.example
+entities:
+  ev_soc: sensor.example_vehicle_soc
+  ev_power: sensor.example_ev_power
+  ev_plugged: binary_sensor.example_ev_plugged
+  ev_readiness: sensor.example_ev_readiness
+  ev_session_energy: sensor.example_ev_session_energy
+  ev_mode: select.example_ev_charge_mode
+  ev_charging: switch.example_ev_charging

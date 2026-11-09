@@ -1,0 +1,9 @@
+{
+  "notice": "SYNTHETIC EXAMPLE ONLY: enter your own verified evidence via integration options, not YAML",
+  "baseline_import_gbp_kwh": "0.25",
+  "baseline_standing_gbp_day": "0.40",
+  "baseline_evidence": "Replace with independently verified evidence",
+  "boundary_verified": false,
+  "boundary_evidence": "Not verified: do not claim numeric validity",
+  "effective_from": "2026-01-01T00:00:00Z"
+}
