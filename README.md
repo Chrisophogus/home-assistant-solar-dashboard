@@ -1,10 +1,10 @@
 # Home Assistant Solar Dashboard
 
-**Sanitized private-repository source: `home-assistant-solar-dashboard`. Prepared and tested locally; GitHub publication awaits account connection. Nothing has been deployed or restarted.**
+**Sanitized private-repository source: `home-assistant-solar-dashboard`. Prepared and tested locally; published to this private repository. Publication does not deploy changes or restart Home Assistant.**
 
 **Source-review candidate only, not a deployment or experimental-worker activation release.** Test/scan evidence is included under `provenance/`.
 
-This source backup does **not** isolate the installed card from HACS updates. No HACS migration, resource change, rename or update protection has been deployed. GitHub publication awaits authentication; no local GitHub credentials or plugin connection are assumed.
+This source backup does **not** isolate the installed card from HACS updates. No HACS migration, resource change, rename or update protection has been deployed.
 
 ## Included
 
@@ -35,6 +35,6 @@ Tests create tiny synthetic in-memory/temp SQLite databases; none are distribute
 
 ## Privacy/licensing
 
-No HA config/storage, photos, credentials, observations, logs or backups should ever be committed, even privately. `.gitignore` and scans are defence in depth, not guarantees. No GitHub auth/push/upload occurred.
+No HA config/storage, photos, credentials, observations, logs or backups should ever be committed, even privately. `.gitignore` and scans are defence in depth, not guarantees.
 
 Card copyright © 2025–2026 Jean-Yves Avenard, Apache-2.0; exact pinned licence preserved. Modifications identified. No blanket licence has been assigned to locally authored finance/shadow work: applicable owners retain their rights pending owner decision. Private publication is not a relicensing grant. Predbat personal-use terms are separate; its implementation is excluded.
