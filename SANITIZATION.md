@@ -1,0 +1,22 @@
+# Repository-only sanitization
+
+Production files/settings/resources and private worksheets untouched. Original source-input hashes in provenance, not a data dump.
+
+Provenance source paths use logical labels (`production/`, `experimental-wrapper-source/`, `synthetic-regression-source/`), not absolute host/cache staging paths. All original source SHA-256 values are preserved.
+
+* Removed **four embedded base64 image payloads** without decoding/exporting them. Replaced house/battery/photo-pack paths with newly authored generic SVG/configurable local template. No original images, even inline, retained.
+* Removed concrete vehicle device/config-entry IDs; lookup now requires optional locally provided config values. Explicit SOC overrides supported. Replaced location-specific EV entity defaults with `example_ev_` and displayed car/charger branding with generic labels. Internal brand-related method/CSS names are code names, not personal identifiers.
+* Configurable weather entity (`weather.example` fallback) and example forecast sensor. Conventional Sigen integration entity names retained as public defaults; no actual dashboard/storage/config export. Runtime location getters contain no literal coordinates.
+* Removed UI fallback household rates/dates/policy timestamp. Public official Sigen iframe/licence/namespace/documentation URLs remain; no private URL, chat session or inbound transcript embedded. Added modified-export notice; upstream copyright preserved.
+* Replaced installation-specific model, diagnostic/loss narrative and numerical fitted evidence with plainly synthetic 10 kWh/3 kW example. Removed two training-derived coefficient sets and exact training/holdout windows. Principal algorithm unchanged; optional `sensitivity_scenarios` retains independently supplied scenario mechanism.
+* Changed commissioning/history/policy dates, tariff templates, capacity defaults and private tariff narrative to illustrative inputs. Model `reviewed_inputs` is a schema enum, NOT verification. Manifest documentation non-routable placeholder; no GitHub identity inferred. Domain/component names unchanged.
+* Python fixtures are generated synthetic arithmetic; no ledger/Recorder capture copied. Pure additional regression tests now import repository modules instead of external capture tooling. Arithmetic assertions adapted consistently to synthetic defaults/rates; example diagnostic timestamp/power values generalized.
+* Backup-dependent frontend comparisons excluded, not disguised as passing self-comparisons. Fresh portable tests cover current logic only; lost comparison/rendering coverage disclosed.
+* Experimental Python wrappers/tests only. Excluded upstream/binary/runtime/source archives, proofs/captures/logs/databases and installation-specific readiness narratives. Uses one hash-guarded repository finance kernel instead of duplicated kernel.
+* Rewrote docs/examples; did not copy private README/report/history, addresses/roof/site/key metadata or photos. No blanket licence invented.
+* Replaced remaining installation-specific UI help text in both language JSON files. Removed seeded panel count/PV rating/controller/reserve metadata from the ledger; example capacities/rates remain plainly synthetic. Default broker binding in the repository prototype is configurable and local-only; no wildcard network-address literal retained. No live control/service settings changed.
+* All 112 finance Python regressions retained, including the adapted tariff-transition, explicit-pence and conservation assertions. Added fixture cleanup for synthetic in-memory SQLite connections instead of suppressing warnings. All 16 experimental component tests retained. Seven newly authored frontend groups test current logic; no old backup/capture is exported.
+
+Excluded by explicit allowlist: HA config/storage/cloud/dependency directories, credentials/private worksheets/tokens/IDs/address/VIN/MPAN/network addresses, real images/weather packs, databases/household fixture captures, logs/profiles/backups and compressed binaries. No live credential file read or hashed by this exporter. Private-source hashes are hashes of requested source code only.
+
+Preserved code may consume runtime HA location/registries/telemetry and configured private credentials when installed; source sanitization is not runtime isolation or an installation approval. Scan is bounded automated evidence, not proof of anonymity. See docs for remaining limits.
