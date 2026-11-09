@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1672 941" role="img" aria-label="Generic solar diagram; no property depicted">
+  <rect width="1672" height="941" fill="#14273e"/>
+  <circle cx="240" cy="170" r="70" fill="#f9d66b"/>
+  <path d="M450 470L820 210L1190 470V800H450Z" fill="#9bb0be"/>
+  <path d="M390 470L820 160L1250 470" fill="none" stroke="#536e8b" stroke-width="60"/>
+  <rect x="650" y="340" width="320" height="110" fill="#215984"/>
+  <rect x="1020" y="600" width="100" height="180" rx="14" fill="#d8e5ec"/>
+  <text x="836" y="890" text-anchor="middle" fill="white" font-family="sans-serif" font-size="32">Generic example artwork</text>
+</svg>
