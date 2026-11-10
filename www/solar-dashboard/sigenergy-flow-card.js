@@ -137,6 +137,7 @@ const DEFAULT_ENTITIES = {
     ev_mode: ['select.example_ev_charge_mode'],
     ev_session_energy: ['sensor.example_ev_session_energy'],
     ev_charging: ['switch.example_ev_charging'],
+    grid_power: [],
     pv_power: ['sensor.sigen_plant_pv_power'],
     home_power: ['sensor.sigen_plant_consumed_power'],
     battery_power: ['sensor.sigen_plant_battery_power', 'sensor.sigen_inverter_battery_power'],
@@ -680,7 +681,7 @@ class SigenergyFlowCard extends HTMLElement {
         <div class="node endpoint-readout" id="pvReadout"><button id="pvButton" title="Show PV string details"><strong id="pv">—</strong><small>SOLAR ›</small></button></div>
         <div class="node endpoint-readout" id="houseReadout">${this.config.home_entities.length
             ? `<button id="homeButton" title="Show Sigenergy-monitored house load"><strong id="home">—</strong><small>HOUSE ›</small></button>`
-            : `<strong id="home">—</strong><small>HOUSE</small>`}<em>Sigenergy-monitored load</em></div>
+            : `<strong id="home">—</strong><small>HOUSE</small>`}<em>${this.config.solis_preview ? 'Solis-monitored load' : 'Sigenergy-monitored load'}</em></div>
         <div class="node ev-readout" id="evReadout"><small>VEHICLE BATTERY</small><strong class="cupra-soc cupra-wait" id="evSoc">Waiting for vehicle data</strong><strong id="evPower">—</strong><small>VEHICLE ·<br>AC CHARGER</small><em id="evStatus"></em><em id="evSession"></em></div>
         <div class="sidecol" id="chargers">
           <div class="node" id="acNode"><strong id="ac">—</strong><small>AC CHARGER</small><em id="acSoc"></em><em id="acTotal"></em></div>
@@ -739,7 +740,12 @@ class SigenergyFlowCard extends HTMLElement {
             this._id('financeDialog').showModal();
         }));
         this._id('financeClose').addEventListener('click', () => this._id('financeDialog').close());
-        this._wireSigenChat();
+        if (this.config.solis_preview) {
+            this.root.querySelectorAll('.backup-reserve, #evReadout, #evPanel, #evFlow, #evFork, #cupraCarGlow, #sigenChatDetails, .sigen-ai > a').forEach(node => node.setAttribute('hidden', ''));
+            this._id('gridMeter').querySelector('em').textContent = 'Solis meter';
+        } else {
+            this._wireSigenChat();
+        }
         this._wireBackupReserve();
         this._id('heading').textContent = [this.config.title, this.config.name].filter(Boolean).join(' · ');
         // The PV string names come from the card config, so they go in as text rather than through the template.
@@ -905,6 +911,7 @@ class SigenergyFlowCard extends HTMLElement {
         if (status.textContent !== message) status.textContent = message;
     }
     async _setBackupReserve(input) {
+        if (this.config.solis_preview) return;
         const value = Number(input), entityId = 'number.sigen_plant_ess_backup_state_of_charge';
         if (input === '' || ![10,25,50,75,100].includes(value) || this._backupReservePending || !this._backupReserveState().valid) return;
         const pending = { value };
@@ -1529,6 +1536,7 @@ class SigenergyFlowCard extends HTMLElement {
         const set = this.config.entities?.[key];
         if (set === false || set === null) return null;
         if (set) return set;
+        if (this.config.solis_preview) return null;
         const ids = DEFAULT_ENTITIES[key];
         return ids.find(id => !['unknown', 'unavailable', undefined].includes(this._hass?.states[id]?.state)) ?? ids[0] ?? null;
     }
@@ -2021,7 +2029,9 @@ class SigenergyFlowCard extends HTMLElement {
           , kw = key => this._scaled(this._ent(key))   // kW or kWh, whatever unit the entity reports
           , pv = this._measuredPower('pv_power')
           , home = this._measuredPower('home_power');
-        const batRaw = this._measuredPower('battery_power', true), bat = batRaw === null ? null : batRaw * this._batterySign();
+        const batRaw = this._measuredPower('battery_power', true);
+        const batteryDirection = !this.config.solis_preview || typeof this.config.battery_power_invert === 'boolean';
+        const bat = batRaw === null || !batteryDirection ? null : batRaw * this._batterySign();
         const socEntity = e('battery_soc');
         const rawSoc = n(socEntity), soc = rawSoc !== null && rawSoc >= 0 && rawSoc <= 100 ? rawSoc : null;
         const imp = this._measuredPower('grid_import_power')
@@ -2035,14 +2045,18 @@ class SigenergyFlowCard extends HTMLElement {
         this._id('chargerArt').setAttribute('display', hasAc || hasDc ? 'inline' : 'none');
         this._id('legendAC').hidden = !hasAc;
         this._id('legendDC').hidden = !hasDc;
-        const grid = this._netGridPower(imp, exp);
+        const signedGrid = this._measuredPower('grid_power', true);
+        const gridDirection = typeof this.config.grid_power_invert === 'boolean';
+        const grid = this.config.solis_preview
+            ? signedGrid === null || !gridDirection ? null : signedGrid * (this.config.grid_power_invert ? -1 : 1)
+            : this._netGridPower(imp, exp);
         this._text('pv', this._power(pv));
         this._text('home', this._power(home));
-        this._text('battery', this._power(bat));
+        this._text('battery', this._power(bat ?? (this.config.solis_preview ? batRaw : null)));
         this._text('soc', soc === null ? '—' : `${soc.toFixed(1)}%`);
-        this._text('battStatus', bat === null ? 'Unavailable' : bat >= FLOW_DEADBAND_KW ? 'Charging' : bat <= -FLOW_DEADBAND_KW ? 'Discharging' : 'Idle');
-        this._text('grid', this._power(grid));
-        this._text('gridStatus', grid === null ? 'Unavailable' : grid >= FLOW_DEADBAND_KW ? 'Importing' : grid <= -FLOW_DEADBAND_KW ? 'Exporting' : 'Idle');
+        this._text('battStatus', bat === null ? (!batteryDirection && batRaw !== null ? 'Direction unverified' : 'Unavailable') : bat >= FLOW_DEADBAND_KW ? 'Charging' : bat <= -FLOW_DEADBAND_KW ? 'Discharging' : 'Idle');
+        this._text('grid', this._power(grid ?? (this.config.solis_preview ? signedGrid : null)));
+        this._text('gridStatus', grid === null ? (this.config.solis_preview && !gridDirection && signedGrid !== null ? 'Direction unverified' : 'Unavailable') : grid >= FLOW_DEADBAND_KW ? 'Importing' : grid <= -FLOW_DEADBAND_KW ? 'Exporting' : 'Idle');
         // Keep measured text and flow state in the same update, before optional
         // statistics/dialog work. A later UI failure must not retain old flows.
         this._updateSchematicFlows(pv, home, bat, grid);
@@ -2521,6 +2535,14 @@ const ARTWORK = {
 // END ARTWORK
 if (!customElements.get('sigenergy-flow-card'))
     customElements.define('sigenergy-flow-card', SigenergyFlowCard);
+class SolisFlowPreview extends SigenergyFlowCard {
+    setConfig(config) {
+        super.setConfig({ ...config, title: 'Solis', solis_preview: true, pv_strings: [],
+            home_entities: [], show_energy_statistics: false, show_phase_mode: false });
+    }
+}
+if (!customElements.get('solis-flow-preview'))
+    customElements.define('solis-flow-preview', SolisFlowPreview);
 window.customCards = window.customCards || [];
 window.customCards.push({
     type: 'sigenergy-flow-card',
