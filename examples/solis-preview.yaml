@@ -1,0 +1,18 @@
+# Load the feature branch card and placeholder artwork from a manually managed
+# /local/solar-dashboard/ directory. Register the JavaScript as a module once.
+# If the Sigenergy card is already loaded, test in an isolated HA instance
+# before changing that resource. Keep real entity IDs in HA only.
+type: custom:solis-flow-preview
+name: My Home
+weather_entity: weather.example
+entities:
+  pv_power: sensor.example_pv_power
+  home_power: sensor.example_house_power
+  grid_power: sensor.example_signed_grid_power
+  battery_power: sensor.example_signed_battery_power
+  battery_soc: sensor.example_battery_soc
+# Uncomment and set these only after verifying the actual sign conventions.
+# false expects positive grid import and positive battery charging.
+# true inverts the corresponding sensor.
+# grid_power_invert: false
+# battery_power_invert: false
